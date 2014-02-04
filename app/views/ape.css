@@ -1,0 +1,1021 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: 'Alte DIN 1451';
+    src: url('/css/fonts/din-1451-alt.eot?') format('eot'), url('/css/fonts/din-1451-alt.ttf') format('truetype'), url('/css/fonts/din-1451-alt.woff') format('woff'); 
+    }
+
+@logo: "/img/footer_logo.gif";
+
+@back-color-1: {back-color-1};
+@back-color-2: {back-color-2};
+@back-color-3: {back-color-3};
+@back-color-4: {back-color-4};
+
+@font-color-1: {font-color-1};
+@font-color-2: {font-color-2};
+
+@back-color-error: {back-color-error};
+
+@back-color-1-light: (@back-color-1 + #111);
+@back-color-2-light: (@back-color-2 + #111);
+@back-color-3-light: (@back-color-3 + #111);
+@back-color-4-light: (@back-color-4 + #111);
+@font-color-1-light: (@font-color-1 + #111);
+@font-color-2-light: (@font-color-2 + #111);
+
+@back-color-1-dark: (@back-color-1 - #111);
+@back-color-2-dark: (@back-color-2 - #111);
+@back-color-2-xdark: (@back-color-2 - #333);
+@back-color-3-dark: (@back-color-3 - #111);
+@back-color-4-dark: (@back-color-4 - #111);
+@font-color-1-dark: (@font-color-1 - #111);
+@font-color-2-dark: (@font-color-2 - #111);
+
+
+.background-gradient (@start-color, @end-color) {
+    background-image: -ms-linear-gradient(top, @start-color 0%, @end-color 100%);
+    background-image: -moz-linear-gradient(top, @start-color 0%, @end-color 100%);
+    background-image: -o-linear-gradient(top, @start-color 0%, @end-color 100%);
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, @start-color), color-stop(1, @end-color));
+    background-image: -webkit-linear-gradient(top, @start-color 0%, @end-color 100%);
+    background-image: linear-gradient(to bottom, @start-color 0%, @end-color 100%);
+}
+
+.box-shadow (@x, @y, @color) {
+    -webkit-box-shadow: @y @x 5px @color;
+    -moz-box-shadow:    @y @x 5px @color;
+    box-shadow:         @y @x 5px @color;
+}
+
+.transition (@prop, @time, @type) {
+    webkit-transition: @prop @time @type;
+    -moz-transition: @prop @time @type;
+    -o-transition: @prop @time @type;
+    transition: @prop @time @type;
+}
+
+.border-radius (@radius) {
+    border-radius: @radius;
+    -moz-border-radius: @radius;
+    -webkit-border-radius: @radius;
+}
+
+.bottom-border-radius(@radius) {
+    -webkit-border-top-left-radius: 0px;
+    -webkit-border-top-right-radius: 0px;
+    -webkit-border-bottom-left-radius: @radius;
+    -webkit-border-bottom-right-radius: @radius;
+    -moz-border-radius-topleft: 0px;
+    -moz-border-radius-topright: 0px;
+    -moz-border-radius-bottomleft: @radius;
+    -moz-border-radius-bottomright: @radius;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: @radius;
+    border-bottom-right-radius: @radius;
+}
+.top-border-radius(@radius) {
+    -webkit-border-top-left-radius: @radius;
+    -webkit-border-top-right-radius: @radius;
+    -webkit-border-bottom-left-radius: 0px;
+    -webkit-border-bottom-right-radius: 0px;
+    -moz-border-radius-topleft: @radius;
+    -moz-border-radius-topright: @radius;
+    -moz-border-radius-bottomleft: 0px;
+    -moz-border-radius-bottomright: 0px;
+    border-top-left-radius: @radius;
+    border-top-right-radius: @radius;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.opacity (@pct) {
+    -ms-filter:`"progid:DXImageTransform.Microsoft.Alpha(Opacity="+ @{pct} +")"`;
+    filter: alpha(opacity=@pct);
+    opacity: @pct / 100;
+}
+
+body {
+    font-family: 'Alte DIN 1451';
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    background-color: @back-color-2;
+    margin:0px;
+    overflow: hidden;
+    color: @font-color-2;
+}
+
+a, p, label, div {
+    box-sizing:border-box;
+}
+
+.both {
+    clear:both;
+}
+
+.well {
+    padding:4px;
+    background-color:@back-color-4-dark;
+}
+
+.right {
+    float:right;
+}
+
+.left {
+    float:left;
+}
+
+.pad-bottom-10 {
+    margin-bottom:10px;
+}
+
+#login-container {
+    max-width: 550px;
+    margin: auto;
+    margin-top: 10%;
+}
+
+.center {
+    text-align:center;
+}
+
+.input {
+    border: 2px solid silver;
+    .border-radius(8px);
+    padding: 8px;
+    font-size: 15px;
+    display:block;
+}
+
+.input-inline {
+    display:inline-block;
+}
+
+.input-small {
+    width: 175px;
+}
+.input:focus {
+    .box-shadow(0px,0px,@back-color-2-dark);
+    outline:none;
+}
+
+.input-large {
+    padding: 15px;
+    .border-radius(10px);
+    font-size: 22px;
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.btn {
+    padding: 8px;
+    .border-radius(8px);
+    border: 2px solid silver;
+    font-size: 15px;
+    cursor: pointer;
+    background: @back-color-4;
+    text-decoration: none;
+    color: @font-color-2;
+    display:inline-block;
+}
+
+.btn:hover {
+    background: @back-color-4-dark;
+}
+
+.btn-small {
+    font-size:12px;
+    padding: 2px;
+    border-radius: 4px;
+    min-width: 44px;
+    min-height: 44px;
+    margin-top: 3px;
+    margin-left: 6px;
+}
+
+.btn-xsmall {
+    min-height: 32px;
+}
+
+.btn-small.active {
+    background-color: @back-color-3;
+}
+
+.btn-small.active > .nav-btn-line {
+    background-color: @back-color-4;
+}
+
+.btn-small.active:hover {
+    background-color: @back-color-3-dark;
+}
+
+.btn-link {
+    border:none;
+    background:none;
+    color: @font-color-1;
+}
+
+.btn-link:hover {
+    text-decoration: underline;
+    background:none;
+}
+
+.btn-link-dark {
+    border:none;
+    background:none;
+    color: @font-color-2;
+    text-decoration:none;
+}
+
+.btn-link-dark:hover {
+    text-decoration: underline;
+    background:none;
+}
+
+.btn-large {
+    font-size: 22px;
+    display: inline-block;
+    padding: 15px;
+    .border-radius(10px);
+    text-align:center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.btn-action {
+    background: @back-color-3 url(/img/menu_bg.png) top right no-repeat;
+    background-size: 80% 80%;
+    color: @font-color-2-dark;
+    
+}
+
+.btn-action:hover {
+    background: @back-color-3-dark url(/img/menu_bg.png) top right no-repeat;
+    background-size: 80% 80%;
+}
+
+.btn-cancel {
+    background: @back-color-2-dark;
+    color: @font-color-2-dark;
+    
+}
+.btn-cancel:hover {
+    background: @back-color-2-xdark;
+}
+
+.btn-large.btn-action {
+    background: @back-color-3 url(/img/menu_bg.png) top right no-repeat;
+}
+.btn-large.btn-action:hover {
+    background: @back-color-3-dark url(/img/menu_bg.png) top right no-repeat;
+}
+
+.btn-tall {
+    height: 35px;
+    display: inline-block;
+    line-height: 35px;
+    padding: 0 8px 0 8px;
+}
+
+.login-logo {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.error {
+    background-color: @back-color-error;
+    color: @font-color-1;
+    .border-radius(8px);
+    padding:10px;
+    margin-top:-10px;
+}
+
+.error-large {
+    font-size: 25px;
+    padding: 20px;
+    .border-radius(10px);
+}
+
+.disabled {
+    pointer-events: none;
+    cursor: default;
+    opacity: 0.65;
+    filter: alpha(opacity=65);
+}
+
+.nav-btn-line {
+    display:block;
+    height: 4px;
+    margin: 4px;
+    .border-radius(3px);
+    background-color: @back-color-1;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+#as-palette {
+    width:200px;
+    height: 400px;
+    box-shadow: 0px 4px 4px #888;
+    position:absolute;
+    top:0px;
+    right:0px;
+    background-color: @back-color-4;
+    z-index: 101;
+    padding: 15px;
+}
+
+#as-palette label {
+    display:block;
+    text-align:right;
+}
+#as-palette input {
+    width: 100px;
+    padding: 7px;
+    border:2px solid silver;
+}
+
+/**
+ *     Main Console
+ */
+
+#page-wrapper {
+    width: 100%;
+    height: 100%;
+    overflow:hidden;
+    position: relative;
+}
+
+#page-container {
+    height:100%;
+    width: auto;
+    background: @back-color-4;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#page {
+    margin-top: 68px;
+}
+
+#left-panel {
+    float:left;
+    height: 100%;
+    width: 200px;
+    background-color:@back-color-2;
+    overflow-x: hidden;
+    overflow-y: auto;
+    z-index: 99;
+}
+
+#left-panel-discover {
+    display:none;
+    position:absolute;
+    left:0px;
+    top:0px;
+    width: 40px;
+}
+
+#nav-panel {
+    margin-top: 71px;
+}
+
+#nav-panel ul {
+    list-style-type:none;
+    padding:0px;
+}
+
+#nav-panel ul li {
+    display:block;
+    background: @back-color-2-dark;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    padding: 10px;
+    font-size: 20px;
+    line-height: 44px;
+    color: @font-color-1;
+}
+
+#nav-panel ul li.nav-item {
+    cursor: pointer;
+    padding:0px;
+}
+
+#nav-panel ul li.nav-item-light {
+    background: @back-color-2;
+}
+
+#nav-panel ul li.nav-item-small {
+    line-height: 25px;
+    font-size: 18px;
+}
+
+#nav-panel ul li.nav-item:hover {
+    background-color: @back-color-2-xdark;
+}
+
+.nav-static:hover {
+    background-color: @back-color-2-dark;
+}
+
+.expanded {
+    background-image: url(/img/expanded.png) !important;
+    background-position-x: 95% !important;
+    background-position-y: center !important;
+    background-repeat: no-repeat !important;
+}
+.contracted {
+    background-image: url(/img/contracted.png) !important;
+    background-position-x: 95% !important;
+    background-position-y: center !important;
+    background-repeat: no-repeat !important;
+}
+
+#nav-panel ul li.nav-item.active {
+    background: @back-color-3 url(/img/menu_bg.png) top right no-repeat;
+    color: @font-color-1;
+    -webkit-border-bottom-right-radius: 10px;
+    -moz-border-radius-bottomright: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+#nav-panel ul li.nav-item.active:hover {
+    background-color: @back-color-3;
+    color: @font-color-1;
+}
+
+#nav-panel ul li.nav-item a {
+    display:block;
+    color: @font-color-2;
+    text-decoration:none;
+    padding: 10px;
+}
+
+#nav-panel ul li.title {
+    background: @back-color-1;
+    color: @font-color-1;
+    display:none;
+}
+
+#nav-panel ul li.separator {
+    background: @back-color-1;
+    color: @font-color-1;
+    height: 5px;
+    padding: 0px;
+}
+
+#navbar {
+    position: fixed;
+    top:0px;
+    background: @back-color-1;
+    width: 100%;
+    z-index: 100;
+    height: 68px;
+}
+
+#subnavbar {
+    background-color: @back-color-1-light;
+    height: 46px;
+    width: 100%;
+
+    h2 {
+        font-size:22px;
+        padding:0px;
+        margin:0px;
+        color: @font-color-1;
+        margin-left: 20px;
+        display:inline-block;
+    }
+
+    .actionbutton {
+        min-height:46px;
+        float:right;
+        .border-radius(0px);
+        margin-top:-10px;
+        margin-right:-10px;
+        padding-top:12px;
+        padding-bottom:4px;
+        .background-gradient(@back-color-4, @back-color-4-dark);
+        color: @font-color-2;
+    }
+    
+}
+
+
+#user-info {
+    float:right;
+    margin-right: 45px;
+    line-height: 68px;
+}
+
+.page-overlay {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width:100%;
+    height: 100%;
+    background-color: @back-color-4;
+    overflow: hidden;
+    .opacity(50);
+    text-align: center;
+    z-index: 98;
+}
+
+#page-overlay-contents {
+    margin-top: 20%;
+    margin-left:auto;
+    margin-right: auto;
+    text-align:center;
+    width: 300px;
+}
+
+.gray-overlay {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width:100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+    overflow: hidden;
+    z-index: 120;
+    .modal {
+        position:relative;
+        margin-top: 50px;
+        margin-left:auto;
+        margin-right: auto;
+        width: 600px;
+        padding:20px;
+        background: white;
+        .border-radius(8px);
+        .box-shadow(0px,0px,#333333);
+        max-height: 90%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+}
+
+.team-selected {
+    line-height: 68px;
+    float:right;
+}
+
+.org-selected {
+    line-height: 68px;
+    float:right;
+}
+
+.nav-link, .nav-link:active, .nav-link:visited {
+    line-height: 68px;
+    background: none;
+    .background-gradient(@back-color-1, @back-color-1-dark);
+    display: inline-block;
+    border: none;
+    text-decoration: none;
+    color: @font-color-1;
+    padding-left: 15px;
+    padding-right: 15px;
+    cursor:pointer;
+}
+
+.nav-link:hover {
+    text-decoration: underline;
+    .background-gradient(shade(@back-color-1, 10%), shade(@back-color-1-dark, 10%));
+}
+
+.nav-link-large {
+    font-size: 20px;
+}
+
+.nav-search-img {
+    float:right;
+    margin-top:5px;
+}
+
+.content {
+    padding:10px;
+    width:1000px;
+}
+
+.half-content {
+    width: 500px;
+    float: left;
+}
+
+.full-content {
+    width:1200px;
+}
+
+
+form {
+    margin:0px;
+    label {
+        display: block;
+        margin-top:10px;
+        font-size:18px;
+        max-width: 600px;
+    }
+}
+
+.org-color-select {
+    float:left;
+    min-width:80px;
+    font-size:14px;
+    input {
+        max-width:80px;
+    }
+}
+
+#org-detail {
+    h2 {
+        display:block;
+        border-bottom: 2px solid @back-color-4-dark;
+        button {
+            float:right;
+        }
+    }
+}
+
+#athlete-profile, .page-top-editor {
+    padding:10px;
+    background: @back-color-2-dark;
+}
+
+#athlete-profile-photo {
+    width: 120px;
+    float:left;
+    display: inline-block;
+    position:relative;
+    min-height: 180px;
+    margin-right: 15px;
+    img {
+        max-height:140px;
+        min-width: 120px;
+        max-width: 120px;
+        width:120px;
+    }
+    
+    a.btn {
+        .border-radius(0px);
+        width:120px;
+        margin:0px;
+        text-align:center;
+    }
+}
+
+#athlete-profile-detail {
+    display:inline-block;
+    float:left;
+    max-width: 300px;
+}
+
+#athlete-data-detail {
+    float:right;
+    
+    .metric {
+        width:140px;
+        display:inline-block;
+        
+        h4 {
+            text-align:center;
+            font-wight:bold;
+            padding-top:0px;
+            margin-top:0px;
+        }
+        
+        p {
+            text-align:center;
+            font-size: 50px;
+            font-weight:bold;
+        }
+        
+        .metric-label {
+            font-size: 20px;
+        }
+    }
+}
+
+#athlete-categories {
+    
+    margin-top:10px;
+    margin-bottom:10px;
+    
+    .athlete-category {
+        display:inline-block;
+        padding:5px;
+        background: @back-color-2-dark;
+        color: @font-color-2;
+        text-decoration:none;
+        min-width: 60px;
+        text-align:center;
+        border: 1px solid @back-color-1-light;
+    }
+    
+    .athlete-category:hover {
+        background-color: @back-color-2-xdark;
+    }
+    
+    .athlete-category.active {
+        background-color: @back-color-3;
+        color: @font-color-2;
+    }
+    
+}
+.athlete-metric {
+    background: @back-color-2;
+    border: 1px solid @back-color-2-dark;
+    margin-bottom: 10px;
+}
+.athlete-metric-title {
+    
+    border-bottom: 2px solid @back-color-3;
+    padding: 10px;
+    
+    .title {
+        float:left;
+    }
+    
+    .last-tracked {
+        float:right;
+        font-size: smaller;
+    }
+}
+
+.athlete-metric-none {
+    background: @back-color-2;
+    border: 1px solid @back-color-2-dark;
+    margin-bottom: 10px;
+    padding: 10px;
+    color: (@back-color-2-xdark - #333);
+}
+
+.athlete-metric-data-container {
+ 
+    padding: 10px;
+    
+    .athlete-metric-data {
+        display:inline-block;
+        min-width: 180px;
+        
+        .title {
+            text-align:center;
+        }
+        
+        .data {
+            text-align:center;
+            font-size: 50px;
+            line-height: 65px;
+        }
+        
+    }
+    
+    .label {
+        font-size: 20px;
+    }
+    
+    .delta-good {
+        color: green;
+    }
+    
+    .delta-bad {
+        color: red;
+    }
+}
+
+#athlete-search-clear {
+    .border-radius(0px);
+    margin-left: -6px;
+    border: 1px solid silver;
+    line-height: 30px;
+    padding: 2px;
+    padding-right: 5px;
+    padding-left: 5px;
+    height: 37px;
+}
+
+#athlete-search {
+    width: 80%;
+    margin-right: 0px;
+    line-height: 31px;
+    border: 1px solid silver;
+    padding: 2px;
+}
+
+.expandable-header {
+    padding: 10px;
+    background-color: @back-color-2-dark;
+    margin-bottom: 10px;
+    cursor:pointer;
+}
+
+.expandable-content {
+    margin-top:-10px;
+    padding:20px;
+}
+
+.expandable-content-toolbar {
+    margin-top: -15px;
+    margin-bottom: 10px;
+    .contents {
+        float:right;
+    }
+}
+
+.metric-manage {
+    padding:10px;
+    background-color: @back-color-2;
+    margin-bottom: 10px;
+    line-height: 28px;
+    
+    button {
+        margin:0px;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+}
+
+.assoc-metric-label {
+    cursor: pointer;
+}
+
+.assoc-metric-form {
+    select {
+        width: 60%;
+    }
+    .btn-action {
+        font-weight: bold;
+    }
+}
+
+
+.ath-data-form {
+    .lbl {
+        display:inline-block;
+        width:30%;
+        padding: 5px;
+    }
+    .data-label {
+        
+    }
+    .data-label-highlight {
+        background: #cccccc;
+    }
+ 
+    border-bottom: 1px silver solid;
+}
+
+.modal-close-button {
+    position:absolute;
+    top: 10px;
+    right: 10px;
+    text-decoration:none;
+    color: #888888;
+}
+
+.roster-athletes {
+    list-style-type: none;
+    margin:0px;
+    padding:0px;
+    a {
+        padding: 10px;
+        display: block;
+        background: @back-color-2-dark;
+        margin: 8px;
+        color: @font-color-2;
+    }
+}
+
+.test-table {
+    width: 100%;
+    tr {
+        th {
+            padding:15px;
+        }
+        td {
+            padding: 10px;
+            background: @back-color-2-dark;
+            margin-top: 10px;
+            .center {
+                text-align:center;
+            }
+            border-bottom:1px solid @back-color-2-xdark;
+        }
+    }
+}
+
+@media (max-width: 1200px) {
+    .content {
+        width: 100%;
+    }
+    .full-content {
+        width: 100%;
+    }
+}
+
+@media (max-width: 883px) {
+    
+    #navbar {
+        height: 50px;
+        img {
+            height: 50px;
+            margin-left: 60px;
+        }
+    }
+
+    #page {
+        margin-top: 50px;
+    }
+    
+    .team-selected {
+        line-height: 50px;
+    }
+
+    .org-selected {
+        display:none;
+    }
+    
+    .nav-link, .nav-link:active, .nav-link:visited {
+        line-height: 50px;
+        margin-left:0px;
+    }
+    
+    #left-panel {
+        float:none;
+        position:absolute;
+        top:50px;
+        left:-300px;
+        transition-property: left;
+        transition-duration: .5s;
+    }
+    
+    #nav-panel {
+        margin-top: -12px;
+    }
+    
+    #left-panel.active {
+        left:0px;
+        
+        transition-property: left;
+        transition-duration: .5s;
+    }
+    
+    #left-panel-discover {
+        display:block;
+    }
+    
+    #user-info {
+        display:none;
+    }
+
+
+    .btn {
+        min-height: 44px;
+    }
+
+    .btn-large {
+        width:100%;
+        display:block;
+    }
+    
+    form {
+        label {
+            max-width:100%;
+        }
+    }
+    
+    .content {
+        width: 100%;
+    }
+    .full-content {
+        width: 100%;
+    }
+    #athlete-profile-detail {
+        font-size:15px;
+    }
+}
+
+@media (max-width: 500px) {
+    .team-selected, .org-selected {
+        display:none;
+    }
+    
+    #nav-panel ul li.title {
+        display:block;
+    }
+    
+    #navbar {
+        text-align:center;
+        img {
+            margin-left:0px;
+        }
+    }
+    
+}

@@ -8,7 +8,7 @@ class Controller {
     
     public $public_views = array();
     
-    public function init() {
+    public static function init() {
         
         if(is_null(self::$instance)) {
         

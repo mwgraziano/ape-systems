@@ -27,7 +27,7 @@ $mascot = $app->account->getMascot();
 		<label for="team-gender">
 			Gender
 			<select name="team-gender" id="team-gender" class="input input-large">
-				<option value="">Select a sport</option>
+				<option value="">Select</option>
 			</select>
 		</label>
 		<label for="frm">

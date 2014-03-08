@@ -1,9 +1,10 @@
 <?php
+
 $a = microtime(true);
 
 ob_start();
 
-require_once("../app/config.php");
+require_once("../app/local_config.php");
 
 App::run();
 

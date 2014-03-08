@@ -31,7 +31,8 @@ class User extends Model
     
     public static function loadByEmail($email) {
         
-        $sql = sprintf("SELECT id FROM users WHERE email = AES_ENCRYPT('%s','%s') AND active = 1", $email, GLOBAL_SECRET);
+// FIXME        $sql = sprintf("SELECT id FROM users WHERE email = AES_ENCRYPT('%s','%s') AND active = 1", $email, GLOBAL_SECRET);
+        $sql = sprintf("SELECT id FROM users WHERE email = '%s' AND active = 1", $email);
         
         $user_id = DB::connect()->getOne($sql);
         
@@ -66,7 +67,8 @@ class User extends Model
     public function changeEmail($new_email) {
         $db = DB::connect();
         
-        $sql = sprintf("UPDATE users SET email = AES_ENCRYPT('%s','%s'), last_update = NOW() WHERE id = %d", $new_email, GLOBAL_SECRET, $this->getId());
+// FIXME        $sql = sprintf("UPDATE users SET email = AES_ENCRYPT('%s','%s'), last_update = NOW() WHERE id = %d", $new_email, GLOBAL_SECRET, $this->getId());
+        $sql = sprintf("UPDATE users SET email = '%s', last_update = NOW() WHERE id = %d", $new_email, $this->getId());
         
         $this->setEmail($new_email);
         $this->cache();
@@ -80,7 +82,8 @@ class User extends Model
         
         if(!$bypass_encrypt) $passwd = self::encryptPassword($passwd);
         
-        $sql = sprintf("INSERT INTO users SET email = AES_ENCRYPT('%s','%s'), passwd = '%s', account_id = %d, last_update = NOW()", $email, GLOBAL_SECRET, $passwd, $acct_id);
+// FIXME        $sql = sprintf("INSERT INTO users SET email = AES_ENCRYPT('%s','%s'), passwd = '%s', account_id = %d, last_update = NOW()", $email, GLOBAL_SECRET, $passwd, $acct_id);
+        $sql = sprintf("INSERT INTO users SET email = '%s', passwd = '%s', account_id = %d, last_update = NOW()", $email, $passwd, $acct_id);
         
         return $db->insert($sql);
         
@@ -102,7 +105,8 @@ class User extends Model
 	{
 		$db = DB::connect();
 		
-        $sql = sprintf("SELECT id FROM users WHERE email = AES_ENCRYPT('%s', '%s') AND passwd = '%s' AND active = 1", $email, GLOBAL_SECRET, self::encryptPassword($password));
+// FIXME        $sql = sprintf("SELECT id FROM users WHERE email = AES_ENCRYPT('%s', '%s') AND passwd = '%s' AND active = 1", $email, GLOBAL_SECRET, self::encryptPassword($password));
+        $sql = sprintf("SELECT id FROM users WHERE email = '%s' AND passwd = '%s' AND active = 1", $email, self::encryptPassword($password));
 		
 		return $db->getOne($sql);
 	}
